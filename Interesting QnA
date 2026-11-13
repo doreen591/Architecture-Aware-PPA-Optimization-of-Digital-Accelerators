@@ -1,0 +1,29 @@
+# Research Notebook — Entry 001
+
+## 1. Why might a parallel accelerator perform better at synthesis but worse after routing?
+
+Parallel architectures may exhibit shorter logic-level critical paths because multiple operations execute concurrently. However, the additional arithmetic units and interconnections can increase placement complexity, routing congestion, parasitic resistance and capacitance, and timing-repair overhead.
+
+Consequently, a parallel architecture that appears faster based on synthesis estimates may experience greater timing degradation after physical implementation. This does not necessarily imply lower throughput, since parallelism can reduce the number of cycles required per operation.
+
+## 2. Which metrics indicate a change in architecture ranking?
+
+The primary metrics are critical-path delay, post-route frequency, standard-cell area, routing congestion, power, energy per operation, and throughput.
+
+Comparing synthesis and post-route measurements helps determine whether physical-design effects change the preferred architecture under a defined optimization objective.
+
+A ranking reversal occurs when the architecture preferred using synthesis-level estimates differs from the architecture preferred using post-route measurements.
+
+## 3. Which constraints must remain consistent?
+
+Experiments should use equivalent functionality, arithmetic precision, technology libraries, operating corners, timing constraints, implementation settings, and workload assumptions.
+
+Physical-design comparisons should follow consistent floorplanning and optimization policies. Any architecture-specific constraints must be explicitly documented.
+
+To improve reproducibility, tool versions, design parameters, experimental seeds, and measurement procedures should be recorded.
+
+## Initial Hypothesis
+
+Early physical-design metrics may provide useful information for selecting accelerator microarchitectures, particularly when synthesis-only estimates do not adequately capture interconnect delay, congestion, and clock-distribution overhead.
+
+This hypothesis will be tested through controlled synthesis and post-route experiments.
